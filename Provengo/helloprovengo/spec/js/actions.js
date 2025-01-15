@@ -13,3 +13,9 @@ function feelLucky(session) {
     click(xpaths.searchWindow.feelingLuckyButton)
   }
 }
+
+function pressLogin(session){
+    with(session){
+        click(xpaths.moodle.login)
+    }
+}
