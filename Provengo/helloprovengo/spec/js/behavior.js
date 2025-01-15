@@ -25,5 +25,8 @@
 bthread('Login', function () {
   let s = new SeleniumSession('login');
   s.start(URL);
-  pressLogin(s)
+  pressLogin(s);
+  typeUsername(s);
+  typePassword(s);
+  pressLoginButton(s);
 })
