@@ -17,14 +17,14 @@ const xpaths = {
       loginButton:'//*[@id="loginbtn"]',
       myCourses:'//nav[@class="moremenu navigation observed"]//a[contains(text(), "My courses")]',
       // myFirstCourse:'//*[@id="course-info-container-2-3"]/div/div/a/span[3]/span[2]'
-      myFirstCourse:'//*[@id="page-container-1"]/div/div/div[1]/div/a/div',
+      myFirstCourse:'//a[@class="aalink coursename me-2 mb-1" and .//span[@aria-hidden="true" and contains(text(), "My first course")]]',
 
     },
     teacher:{
       editMode:'//*[@id="usernavigation"]/form/div/div',
       mainPage:'//*[@id="page"]',
       addActivity:'//*[@id="coursecontentcollapse0"]/div[2]/div/button/div/span',
-      assignment:'//*[@id="all-6"]/div/div[1]/div/a/div[1]/img',
+      assignment:'//div[@class="optionname clamp-2" and text()="Assignment"]',
       assignmentName:'//*[@id="id_name"]',
       assignmentDescription:'//*[@id="id_introeditor_ifr"]',
       saveAndReturn:'//*[@id="id_submitbutton"]',
@@ -32,7 +32,6 @@ const xpaths = {
       assignmentSettings:'//li[@data-key="modedit" and @role="none"]/a[contains(text(), "Settings")]\n',
       assignmentChooseFileType:'//input[@type=\'button\' and contains(@value, \'Choose\')]\n',
 
-      // docxFileType:'//input[@data-filetypesbrowserkey=\'document\']',
       docxFileType:'//div[@data-filetypesbrowserkey="document"]//small[@aria-hidden="true" and @data-filetypesbrowserfeature="hideifexpanded"]//a[text()="Expand"]',
       specificDocxFileType:'//span[text()=\'Word 2007 document\']',
       fileTypeSave:'//button[@type=\'button\' and @data-action=\'save\']'
@@ -42,6 +41,7 @@ const xpaths = {
       assignmentLink:'//li[contains(@class, "activity-wrapper") and contains(@class, "modtype_assign")]//div[@class="activity-name-area activity-instance d-flex flex-column me-2"]//a[contains(@href, "mod/assign/view.php") and contains(.//span, "Assignment 1")]\n',
       addSubmission: '//button[@type=\'submit\' and contains(text(), \'Add submission\')]\n',
       addButton: '//a[@role="button" and @title="Add..." and contains(@class, "btn-secondary")]',
+      uploadAFileButton: '//div[@class="fp-repo nav-item even active" and @role="tab" and .//span[@class="fp-repo-name" and text()="Upload a file"]]\n',
       selector: '//input[@type="file" and @name="repo_upload_file"]',
       uploadThisFile:'//button[@class="fp-upload-btn btn-primary btn" and text()="Upload this file"]\n',
       dialog : '//div[contains(@class, "moodle-dialogue") and contains(@class, "yui3-panel")]',

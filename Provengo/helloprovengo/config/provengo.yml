@@ -1,2 +1,2 @@
 version: 2
-selenium.max-windows: true
+#selenium.max-windows: true

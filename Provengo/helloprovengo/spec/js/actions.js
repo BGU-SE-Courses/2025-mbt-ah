@@ -126,6 +126,25 @@ function pressFileTypeSave(session){
 
 // for student
 
+function handleModal(session) {
+    try {
+        // Attempt to find the "Got it" button
+        const gotItButton = session.findElement(
+            '//button[@class="btn btn-primary" and @data-role="end" and text()=" Got it "]'
+        );
+
+        // If the button exists, click it
+        if (gotItButton) {
+            session.click('//button[@class="btn btn-primary" and @data-role="end" and text()=" Got it "]');
+        } else {
+        }
+    } catch (error) {
+        // Handle any unexpected errors
+    }
+}
+
+
+
 function pressAssignmentLinkStudent(session){
     with(session){
         click(xpaths.moodle.student.assignmentLink)
@@ -141,6 +160,12 @@ function pressAddSubmission(session){
 function pressAddButton(session){
     with(session){
         click(xpaths.moodle.student.addButton)
+    }
+}
+
+function pressUploadAFile(session){
+    with(session){
+        click(xpaths.moodle.student.uploadAFileButton)
     }
 }
 
