@@ -15,19 +15,25 @@ const xpaths = {
       username:'//*[@id="username"]',
       password:'//*[@id="password"]',
       loginButton:'//*[@id="loginbtn"]',
-      myCourses:'//*[@id="moremenu-6789058307bb6-navbar-nav"]/li[3]/a',
-      myFirstCourse:'//*[@id="course-info-container-2-3"]/div/div/a/span[3]/span[2]'
+      myCourses:'//nav[@class="moremenu navigation observed"]//a[contains(text(), "My courses")]',
+      // myFirstCourse:'//*[@id="course-info-container-2-3"]/div/div/a/span[3]/span[2]'
+      myFirstCourse:'//*[@id="page-container-1"]/div/div/div[1]/div/a/div',
+
     },
     teacher:{
-      editMode:'//*[@id="678905d19a246678905d1855cb8-editingswitch"]',
+      editMode:'//*[@id="usernavigation"]/form/div/div',
       addActivity:'//*[@id="coursecontentcollapse0"]/div[2]/div/button/div/span',
-      assignment:'//*[@id="all-7"]/div/div[1]/div/a',
+      assignment:'//*[@id="all-6"]/div/div[1]/div/a/div[1]/img',
       assignmentName:'//*[@id="id_name"]',
       assignmentDescription:'//*[@id="id_introeditor_ifr"]',
       saveAndReturn:'//*[@id="id_submitbutton"]',
-      assignmentLink:'//*[@id="yui_3_18_1_1_1737033327907_268"]/div/div/span/a[1]',
-      assignmentSettings:'//*[@id="moremenu-678906ab62b85-nav-tabs"]/li[2]/a',
-      assignmentChooseFileType:'//*[@id="yui_3_18_1_1_1737033418479_1164"]',
+      assignmentLink:'//div[contains(@class, \'activity-grid\')]//a[contains(@class, \'aalink\') and contains(text(), \'Assignment 1\')]\n',
+      //*[@id="module-5"]/div/div[2]/div[2]/div/div/a
+      //*[@id="module-5"]/div/div[2]/div[2]/div
+      //*[@id="module-5"]/div/div[2]/div[2]
+      //*[@id="module-5"]/div/div[2]
+      assignmentSettings:'//li[@data-key="modedit" and @role="none"]/a[contains(text(), "Settings")]\n',
+      assignmentChooseFileType:'//button[contains(text(), "Choose")]',
       docxFileType:'//*[@id="yui_3_18_1_1_1737033418479_1214"]',
       fileTypeSave:'//*[@id="yui_3_18_1_1_1737033418479_1239"]'
     },
@@ -35,9 +41,7 @@ const xpaths = {
     student:{
       assignmentLink: '//*[@id="module-7"]/div/div[2]/div[2]/div/div/a',
       addSubmission: '//*[@id="single_button678907c1129358"]',
-      uploadFile: '//*[@id="id_filemanager"]',
-
-
+      uploadFile: '//*[@id="filepicker-button-1"]//input[@type="file"]',
 
     }
 

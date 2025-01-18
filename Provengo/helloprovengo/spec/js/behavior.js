@@ -1,32 +1,41 @@
-/* @provengo summon selenium */
-
-/**
- * This story opens a new browser window, goes to google.com, and searches for "Pizza".
- */
-// bthread('Search', function () {
-//   let s = new SeleniumSession('search');
+// bthread('Start',function () {
+//   let s = new SeleniumSession('login');
 //   s.start(URL);
-//   composeQuery(s, { text: 'Pizza' })
-//   startSearch(s)
-// })
+//   pressLogin(s);
+//   typeUsernameTeacher(s);
+//   typePassword(s);
+//   pressLoginButton(s);
+//   pressMyCourses(s);
+//   pressMyFirstCourse(s);
+//   pressEditMode(s);
+//   pressAddActivity(s);
+//   pressAssignment(s);
+//   typeAssignmentName(s);
+//   typeAssignmentDescription(s);
+//   pressSaveAndReturn(s);
+//     // Signal the completion of the Start thread
+//   bp.sync({request: bp.Event('StartComplete')});
+// });
 
-/**
- * This story opens a new browser window, goes to google.com, and searches for "Pasta" using the "I Feel Lucky" feature.
- */
-// bthread('Feeling lucky', function () {
-//   let s = new SeleniumSession('lucky');
-//   s.start(URL);
-//   composeQuery(s, { text: 'Pasta' })
-//   feelLucky(s)
-// })
+// Teacher use case
+bthread('Teacher', function () {
+  // Wait for the Start thread to complete
+  // bp.sync({waitFor: bp.Event('StartComplete')});
 
-
-//login
-bthread('Login', function () {
-  let s = new SeleniumSession('login');
+  let s = new SeleniumSession('teacher');
   s.start(URL);
   pressLogin(s);
-  typeUsername(s);
+  typeUsernameTeacher(s);
   typePassword(s);
   pressLoginButton(s);
-})
+  pressMyCourses(s);
+  pressMyFirstCourse(s);
+  // Ctrl.doSleep(3000000);
+  pressAssignmentLinkTeacer(s);
+  pressAssignmentSettings(s);
+  // Ctrl.doSleep(3000000);
+  pressAssignmentChooseFileType(s);
+  pressDocxFileType(s);
+  pressFileTypeSave(s);
+  pressSaveAndReturn(s);
+});
