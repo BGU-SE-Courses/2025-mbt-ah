@@ -17,25 +17,47 @@
 //   bp.sync({request: bp.Event('StartComplete')});
 // });
 
-// Teacher use case
-bthread('Teacher', function () {
+// // Teacher use case
+// bthread('Teacher', function () {
+//   // Wait for the Start thread to complete
+//   bp.sync({waitFor: bp.Event('StartComplete')});
+//
+//   let s = new SeleniumSession('teacher');
+//   s.start(URL);
+//   pressLogin(s);
+//   typeUsernameTeacher(s);
+//   typePassword(s);
+//   pressLoginButton(s);
+//   pressMyCourses(s);
+//   pressMyFirstCourse(s);
+//   pressAssignmentLinkTeacher(s);
+//   pressAssignmentSettings(s);
+//   pressAssignmentChooseFileType(s);
+//   pressDocxFileType(s);
+//   pressSpecificDocxFileType(s);
+//   // Ctrl.doSleep(3000000);
+//   pressFileTypeSave(s);
+//   pressSaveAndReturn(s);
+// });
+
+
+// Student use case
+bthread('Student', function () {
   // Wait for the Start thread to complete
   // bp.sync({waitFor: bp.Event('StartComplete')});
 
-  let s = new SeleniumSession('teacher');
+  let s = new SeleniumSession('student');
   s.start(URL);
   pressLogin(s);
-  typeUsernameTeacher(s);
+  typeUsernameStudent(s);
   typePassword(s);
   pressLoginButton(s);
   pressMyCourses(s);
   pressMyFirstCourse(s);
+  pressAssignmentLinkStudent(s);
+  pressAddSubmission(s);
   // Ctrl.doSleep(3000000);
-  pressAssignmentLinkTeacer(s);
-  pressAssignmentSettings(s);
-  // Ctrl.doSleep(3000000);
-  pressAssignmentChooseFileType(s);
-  pressDocxFileType(s);
-  pressFileTypeSave(s);
-  pressSaveAndReturn(s);
+  pressUploadFile(s);
+  // pressSaveChanges(s);
+  // pressContinue(s);
 });

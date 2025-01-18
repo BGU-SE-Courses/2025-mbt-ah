@@ -22,26 +22,27 @@ const xpaths = {
     },
     teacher:{
       editMode:'//*[@id="usernavigation"]/form/div/div',
+      mainPage:'//*[@id="page"]',
       addActivity:'//*[@id="coursecontentcollapse0"]/div[2]/div/button/div/span',
       assignment:'//*[@id="all-6"]/div/div[1]/div/a/div[1]/img',
       assignmentName:'//*[@id="id_name"]',
       assignmentDescription:'//*[@id="id_introeditor_ifr"]',
       saveAndReturn:'//*[@id="id_submitbutton"]',
-      assignmentLink:'//div[contains(@class, \'activity-grid\')]//a[contains(@class, \'aalink\') and contains(text(), \'Assignment 1\')]\n',
-      //*[@id="module-5"]/div/div[2]/div[2]/div/div/a
-      //*[@id="module-5"]/div/div[2]/div[2]/div
-      //*[@id="module-5"]/div/div[2]/div[2]
-      //*[@id="module-5"]/div/div[2]
+      assignmentLink:'//li[contains(@class, "activity-wrapper") and contains(@class, "modtype_assign")]//div[@class="activity-name-area activity-instance d-flex flex-column me-2"]//a[contains(@href, "mod/assign/view.php") and contains(.//span, "Assignment 1")]\n',
       assignmentSettings:'//li[@data-key="modedit" and @role="none"]/a[contains(text(), "Settings")]\n',
-      assignmentChooseFileType:'//button[contains(text(), "Choose")]',
-      docxFileType:'//*[@id="yui_3_18_1_1_1737033418479_1214"]',
-      fileTypeSave:'//*[@id="yui_3_18_1_1_1737033418479_1239"]'
+      assignmentChooseFileType:'//input[@type=\'button\' and contains(@value, \'Choose\')]\n',
+
+      // docxFileType:'//input[@data-filetypesbrowserkey=\'document\']',
+      docxFileType:'//div[@data-filetypesbrowserkey="document"]//small[@aria-hidden="true" and @data-filetypesbrowserfeature="hideifexpanded"]//a[text()="Expand"]',
+      specificDocxFileType:'//span[text()=\'Word 2007 document\']',
+      fileTypeSave:'//button[@type=\'button\' and @data-action=\'save\']'
     },
 
     student:{
-      assignmentLink: '//*[@id="module-7"]/div/div[2]/div[2]/div/div/a',
-      addSubmission: '//*[@id="single_button678907c1129358"]',
-      uploadFile: '//*[@id="filepicker-button-1"]//input[@type="file"]',
+      assignmentLink:'//li[contains(@class, "activity-wrapper") and contains(@class, "modtype_assign")]//div[@class="activity-name-area activity-instance d-flex flex-column me-2"]//a[contains(@href, "mod/assign/view.php") and contains(.//span, "Assignment 1")]\n',
+      addSubmission: '//button[@type=\'submit\' and contains(text(), \'Add submission\')]\n',
+
+      uploadFile: '//div[contains(@class, "fp-btn-add")]/a[@role="button" and contains(@title, "Add...")]',
 
     }
 

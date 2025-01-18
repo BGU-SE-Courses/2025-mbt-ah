@@ -48,6 +48,12 @@ function pressEditMode(session){
     }
 }
 
+function pressMainPage(session){
+    with(session){
+        click(xpaths.moodle.teacher.mainPage)
+    }
+}
+
 function pressAddActivity(session){
     with(session){
         click(xpaths.moodle.teacher.addActivity)
@@ -76,7 +82,7 @@ function pressSaveAndReturn(session){
 
 // use case starts here
 
-function pressAssignmentLinkTeacer(session){
+function pressAssignmentLinkTeacher(session){
     with(session){
         click(xpaths.moodle.teacher.assignmentLink)
     }
@@ -100,6 +106,12 @@ function pressDocxFileType(session){
     }
 }
 
+function pressSpecificDocxFileType(session){
+    with(session){
+        click(xpaths.moodle.teacher.specificDocxFileType)
+    }
+}
+
 function pressFileTypeSave(session){
     with(session){
         click(xpaths.moodle.teacher.fileTypeSave)
@@ -108,7 +120,7 @@ function pressFileTypeSave(session){
 
 // for student
 
-function pressAssignmentLink(session){
+function pressAssignmentLinkStudent(session){
     with(session){
         click(xpaths.moodle.student.assignmentLink)
     }
