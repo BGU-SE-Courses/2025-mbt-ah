@@ -8,6 +8,7 @@
 //   pressMyCourses(s);
 //   pressMyFirstCourse(s);
 //   pressEditMode(s);
+//   handleTutorial(s);
 //   pressAddActivity(s);
 //   pressAssignment(s);
 //   typeAssignmentName(s);
@@ -16,7 +17,7 @@
 //     // Signal the completion of the Start thread
 //   bp.sync({request: bp.Event('StartComplete')});
 // });
-
+//
 // // Teacher use case
 // bthread('Teacher', function () {
 //   // Wait for the Start thread to complete
@@ -56,8 +57,13 @@ bthread('Student', function () {
   pressMyFirstCourse(s);
   pressAssignmentLinkStudent(s);
   pressAddSubmission(s);
-  // Ctrl.doSleep(3000000);
+  pressAddButton(s);
   pressUploadFile(s);
-  // pressSaveChanges(s);
-  // pressContinue(s);
+  pressUploadThisFile(s);
+  // var that keeps if dialog is present
+    if (handleDialog(s)){
+      pressSaveChanges(s);
+    }
+  Ctrl.doSleep(3000000);
+
 });

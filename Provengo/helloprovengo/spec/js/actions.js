@@ -48,10 +48,16 @@ function pressEditMode(session){
     }
 }
 
-function pressMainPage(session){
-    with(session){
-        click(xpaths.moodle.teacher.mainPage)
+function handleTutorial(session){
+    try {
+        if (session.waitForVisibility(xpaths.moodle.teacher.mainPage, 5000)) {
+            session.waitForVisibility(xpaths.moodle.teacher.mainPage, 1000);
+            session.click(xpaths.moodle.teacher.mainPage);
+            return false;
+        }
+    } catch (error) {
     }
+    return true;
 }
 
 function pressAddActivity(session){
@@ -132,10 +138,38 @@ function pressAddSubmission(session){
     }
 }
 
+function pressAddButton(session){
+    with(session){
+        click(xpaths.moodle.student.addButton)
+    }
+}
+
 function pressUploadFile(session){
     // use this sn.fileUpload(selectors, files)
-    session.fileUpload(xpaths.moodle.student.uploadFile,'Provengo/helloprovengo/data/test.txt')
+    session.fileUpload(xpaths.moodle.student.selector,'D:\\Gal\\Documents\\GalCo3\\2025-mbt-ah\\Provengo\\helloprovengo\\data\\test.txt')
+}
+
+function pressUploadThisFile(session){
+    with(session){
+        click(xpaths.moodle.student.uploadThisFile)
+    }
+}
+
+function handleDialog(session) {
+    try {
+        if (session.waitForVisibility(xpaths.moodle.student.dialog, 5000)) {
+            session.waitForVisibility(xpaths.moodle.student.dialogOkButton, 1000);
+            session.click(xpaths.moodle.student.dialogOkButton);
+            return false;
+        }
+    } catch (error) {
+    }
+    return true;
 }
 
 
-
+    function pressSaveChanges(session) {
+        with (session) {
+            click(xpaths.moodle.student.saveChanges)
+        }
+    }

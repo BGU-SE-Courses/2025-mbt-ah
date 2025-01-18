@@ -41,8 +41,12 @@ const xpaths = {
     student:{
       assignmentLink:'//li[contains(@class, "activity-wrapper") and contains(@class, "modtype_assign")]//div[@class="activity-name-area activity-instance d-flex flex-column me-2"]//a[contains(@href, "mod/assign/view.php") and contains(.//span, "Assignment 1")]\n',
       addSubmission: '//button[@type=\'submit\' and contains(text(), \'Add submission\')]\n',
-
-      uploadFile: '//div[contains(@class, "fp-btn-add")]/a[@role="button" and contains(@title, "Add...")]',
+      addButton: '//a[@role="button" and @title="Add..." and contains(@class, "btn-secondary")]',
+      selector: '//input[@type="file" and @name="repo_upload_file"]',
+      uploadThisFile:'//button[@class="fp-upload-btn btn-primary btn" and text()="Upload this file"]\n',
+      dialog : '//div[contains(@class, "moodle-dialogue") and contains(@class, "yui3-panel")]',
+      dialogOkButton : '//input[@type="button" and @value="OK"]',
+      saveChanges: '//input[@id="id_submitbutton"]\n'
 
     }
 
