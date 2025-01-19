@@ -48,17 +48,21 @@ function pressEditMode(session){
     }
 }
 
-function handleTutorial(session){
+function handleTutorial(session) {
     try {
-        if (session.waitForVisibility(xpaths.moodle.teacher.mainPage, 5000)) {
-            session.waitForVisibility(xpaths.moodle.teacher.mainPage, 1000);
-            session.click(xpaths.moodle.teacher.mainPage);
-            return false;
+        // Check if the "Skip tour" button is visible in the modal dialog
+        const isButtonVisible = session.findElement('//div[@class="modal-dialog" and @role="document" and @data-role="flexitour-step"]//button[@class="btn btn-secondary" and @data-role="end" and text()="Skip tour"]', { wait: false });
+
+        if (isButtonVisible) {
+            // If visible, click the button
+            session.click('//div[@class="modal-dialog" and @role="document" and @data-role="flexitour-step"]//button[@class="btn btn-secondary" and @data-role="end" and text()="Skip tour"]');
         }
     } catch (error) {
+        // console.error("Error handling 'Skip tour' modal:", error);
     }
-    return true;
 }
+
+
 
 function pressAddActivity(session){
     with(session){

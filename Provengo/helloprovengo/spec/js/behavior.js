@@ -8,6 +8,7 @@ bthread('Start',function () {
   pressMyCourses(s);
   pressMyFirstCourse(s);
   pressEditMode(s);
+  Ctrl.doSleep(3000);
   handleTutorial(s);
   pressAddActivity(s);
   pressAssignment(s);
