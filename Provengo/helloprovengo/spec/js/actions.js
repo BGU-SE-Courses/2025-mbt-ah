@@ -175,8 +175,16 @@ function pressUploadAFile(session){
 
 function pressUploadFile(session){
     // use this sn.fileUpload(selectors, files)
-    session.fileUpload(xpaths.moodle.student.selector,'D:\\Gal\\Documents\\GalCo3\\2025-mbt-ah\\Provengo\\helloprovengo\\data\\test.txt')
+    session.fileUpload(xpaths.moodle.student.selector, FILE_PATH);
 }
+
+// function absulutePathFromRelativePath(relativePath) {
+//     // Assuming __dirname is provided by the Provengo environment
+//     const basePath = __dirname || '.';
+//     return basePath + '/' + relativePath.replace(/\\/g, '/');
+// }
+
+
 
 function pressUploadThisFile(session){
     with(session){
@@ -185,16 +193,24 @@ function pressUploadThisFile(session){
 }
 
 function handleDialog(session) {
+    // if the ok button is present, click it, else do nothing
     try {
-        if (session.waitForVisibility(xpaths.moodle.student.dialog, 5000)) {
-            session.waitForVisibility(xpaths.moodle.student.dialogOkButton, 1000);
+        // Attempt to find the "OK" button
+        const okButton = session.findElement(xpaths.moodle.student.dialogOkButton);
+
+        // If the button exists, click it
+        if (okButton) {
             session.click(xpaths.moodle.student.dialogOkButton);
+            return true;
+        } else {
             return false;
         }
     } catch (error) {
+        // Handle any unexpected errors
+        return false;
     }
-    return true;
 }
+
 
 
     function pressSaveChanges(session) {

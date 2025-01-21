@@ -2,16 +2,19 @@
  *  This is a good place to put common test data, project-wide constants, etc.
  */
 
-// const URL = 'https://www.google.com/?hl=en';
-const URL = 'https://sandbox.moodledemo.net/';
+const URL = 'http://localhost/';
+const FILE_PATH = 'C:\\Users\\galna\\Documents\\tests\\Provengo\\helloprovengo\\data\\test.txt';
+
 const TEACHER_USERNAME = 'teacher';
 const STUDENT_USERNAME = 'student';
-const PASSWORD = 'sandbox24';
+const PASSWORD = 'Sandbox24!';
 
 const xpaths = {
   moodle:{
     general:{
-      login:'//*[@id="usernavigation"]/div[5]/div/span/a',
+      // login:'//*[@id="usernavigation"]/div[5]/div/span/a',
+      login:'//*[@id="usernavigation"]/div/div/span/a',
+      // login: '//*[@id="usernavigation"]/div[3]/div/span/a',
       username:'//*[@id="username"]',
       password:'//*[@id="password"]',
       loginButton:'//*[@id="loginbtn"]',
@@ -45,7 +48,7 @@ const xpaths = {
       uploadAFileButton: '//span[@class="fp-repo-name" and text()="Upload a file"]',
       selector: '//input[@type="file" and @name="repo_upload_file"]',
       uploadThisFile:'//button[@class="fp-upload-btn btn-primary btn" and text()="Upload this file"]\n',
-      dialog : '//div[contains(@class, "moodle-dialogue") and contains(@class, "yui3-panel")]',
+      // dialog : '//div[contains(@class, "moodle-dialogue") and contains(@class, "yui3-panel")]',
       dialogOkButton : '//input[@type="button" and @value="OK"]',
       saveChanges: '//input[@id="id_submitbutton"]\n'
 
