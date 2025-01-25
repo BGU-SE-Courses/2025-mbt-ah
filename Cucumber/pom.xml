@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>hellocucumber</groupId>
-    <artifactId>hellocucumber</artifactId>
+    <artifactId>AssignmentFileSubmissionTests</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
     <name>Cucumber-Java Skeleton</name>
