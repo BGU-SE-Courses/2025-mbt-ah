@@ -63,7 +63,6 @@ function handleTutorial(session) {
 }
 
 
-
 function pressAddActivity(session){
     with(session){
         click(xpaths.moodle.teacher.addActivity)
@@ -201,9 +200,9 @@ function handleDialog(session) {
         // If the button exists, click it
         if (okButton) {
             session.click(xpaths.moodle.student.dialogOkButton);
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     } catch (error) {
         // Handle any unexpected errors

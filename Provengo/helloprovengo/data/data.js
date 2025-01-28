@@ -3,7 +3,7 @@
  */
 
 const URL = 'http://localhost/';
-const FILE_PATH = 'C:\\Users\\galna\\Documents\\tests\\Provengo\\helloprovengo\\data\\test.txt';
+const FILE_PATH = 'C:\\Users\\galna\\Downloads\\2025-mbt-ah\\Provengo\\helloprovengo\\data\\test.txt';
 
 const TEACHER_USERNAME = 'teacher';
 const STUDENT_USERNAME = 'student';

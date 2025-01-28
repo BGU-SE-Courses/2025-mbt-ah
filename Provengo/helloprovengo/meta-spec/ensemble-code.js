@@ -4,67 +4,107 @@
  * List of events "of interest" that we want test suites to cover.
  */
 const GOALS = [
-    any(/Howdy/),
-    any(/Mars/),
-    Ctrl.markEvent("Classic!")
+    any(/StartComplete/),      // We want the teacher’s initial steps done
+    any(/AssignmentCreated/),  // The teacher created an assignment
+    any(/DocxFileTypeSet/),    // The teacher changed the file type to docx
+    any(/StudentSubmission/)   // The student submitted the assignment
 ];
 
-const makeGoals = function(){
-    return [ [ any(/Howdy/), any(/Venus/) ],
-             [ any(/Mars/) ],
-             [ Ctrl.markEvent("Classic!") ] ];
+const ALL_PAIRS = buildAllPairs(GOALS);
+function buildAllPairs(eventsArray) {
+    let pairs = [];
+    for (let i = 0; i < eventsArray.length; i++) {
+        for (let j = i + 1; j < eventsArray.length; j++) {
+            pairs.push([eventsArray[i], eventsArray[j]]);
+        }
+    }
+    return pairs;
 }
 
-/**
- * Ranks test suites by how many events from the GOALS array were met.
- * The more goals are met, the higher the score.
- * 
- * It make no difference if a goal was met more then once.
- *
- * @param {Event[][]} ensemble The test suite to be ranked.
- * @returns Number of events from GOALS that have been met.
- */
-function rankByMetGoals( ensemble ) {
-    const unreachedGoals = [];
-    for ( let idx=0; idx<GOALS.length; idx++ ) {
-        unreachedGoals.push(GOALS[idx]);
+// Return the number (0–DOMAIN_GOALS.length) of domain events found in an ensemble
+function countDomainGoalsMet(ensemble) {
+    // Copy the goals array so we can track “unreached” ones
+    let unreached = GOALS.slice();
+
+    // For each test (trace) in the suite
+    for (let trace of ensemble) {
+        // For each event in that trace
+        for (let evt of trace) {
+            // Check if evt matches any unreached goal
+            for (let i = unreached.length - 1; i >= 0; i--) {
+                if (unreached[i].contains(evt)) {
+                    unreached.splice(i, 1);
+                }
+            }
+            // If we already have no unreached goals, we can break early
+            if (unreached.length === 0) break;
+        }
+        if (unreached.length === 0) break;
     }
 
-    for (let testIdx = 0; testIdx < ensemble.length; testIdx++) {
-        let test = ensemble[testIdx];
-        for (let eventIdx = 0; eventIdx < test.length; eventIdx++) {
-            let event = test[eventIdx];
-            for (let ugIdx=unreachedGoals.length-1; ugIdx >=0; ugIdx--) {
-                let unreachedGoal = unreachedGoals[ugIdx];
-                if ( unreachedGoal.contains(event) ) {
-                    unreachedGoals.splice(ugIdx,1);
+    // The number of domain-specific events we found
+    return GOALS.length - unreached.length;
+}
+
+
+/**
+ * Checks how many pairs of events we covered (each pair E1, E2
+ * found in at least one test trace in any order).
+ */
+function countPairsMet(ensemble) {
+    // Copy pairs so we track which are still not covered
+    let uncoveredPairs = ALL_PAIRS.slice();
+
+    for (let trace of ensemble) {
+        // We'll see which events occur in this trace
+        let eventsInTrace = trace.map(e => e);
+
+        // For each pair in uncoveredPairs, check if both E1 and E2 appear
+        // in `eventsInTrace` in any order
+        for (let i = uncoveredPairs.length - 1; i >= 0; i--) {
+            const [E1, E2] = uncoveredPairs[i];
+            let foundE1 = false, foundE2 = false;
+            for (let evt of eventsInTrace) {
+                // see if matches E1
+                if (!foundE1 && E1.contains(evt)) {
+                    foundE1 = true;
+                }
+                // see if matches E2
+                if (!foundE2 && E2.contains(evt)) {
+                    foundE2 = true;
+                }
+                if (foundE1 && foundE2) {
+                    // This trace covers that pair in some order
+                    uncoveredPairs.splice(i, 1); // remove it from uncovered
+                    break; // no need to check more in this trace
                 }
             }
         }
+        if (uncoveredPairs.length === 0) break; // all pairs covered
     }
 
-    return GOALS.length-unreachedGoals.length;
+    return ALL_PAIRS.length - uncoveredPairs.length;
+}
+
+function domainRanking(ensemble) {
+    let met = countDomainGoalsMet(ensemble);
+    return (met / GOALS.length) * 100;
 }
 
 /**
- * Ranks potential test suites based on the percentage of goals they cover.
- * Goal events are defined in the GOALS array above. An ensemble with rank
- * 100 covers all the goal events.
- *
- * Multiple ranking functions are supported - to change ranking function,
- * use the `ensemble.ranking-function` configuration key, or the 
- * --ranking-function <functionName> command-line parameter.
- *
- * @param {Event[][]} ensemble the test suite/ensemble to be ranked
- * @returns the percentage of goals covered by `ensemble`.
+ * Pairwise coverage in percentage:
+ * [the fraction of pairs covered] * 100
  */
- function rankingFunction(ensemble) {
-    
-    // How many goals did `ensemble` hit?
-    const metGoalsCount = rankByMetGoals(ensemble);
-    // What percentage of the goals did `ensemble` cover?
-    const metGoalsPercent = metGoalsCount/GOALS.length;
-
-    return metGoalsPercent * 100; // convert to human-readable percentage
+function twoWayRanking(ensemble) {
+    let coveredPairs = countPairsMet(ensemble);
+    return (coveredPairs / ALL_PAIRS.length) * 100;
 }
 
+
+/**
+ * By default, pick *domainRanking* or *twoWayRanking*.
+ * Example: use the domain-specific coverage as default.
+ */
+function rankingFunction(ensemble) {
+    return domainRanking(ensemble);
+}
