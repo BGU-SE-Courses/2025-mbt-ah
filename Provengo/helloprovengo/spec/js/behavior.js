@@ -8,24 +8,31 @@ bthread('Start',function () {
   pressMyCourses(s);
   pressMyFirstCourse(s);
   pressEditMode(s);
-  Ctrl.doSleep(3000);
   handleTutorial(s);
+
+  deleteAssignment(s);
+  // Ctrl.doSleep(30000);
+
   pressAddActivity(s);
   pressAssignment(s);
   typeAssignmentName(s);
   typeAssignmentDescription(s);
   pressSaveAndReturn(s);
-    // Signal the completion of the Start thread
-  bp.sync({request: bp.Event('StartComplete')});
+  // This indicates the teacher finished creating an assignment
+  bp.sync({ request: bp.Event('AssignmentCreated') });
+
+  // Signal the completion of the Start thread
+  bp.sync({ request: bp.Event('StartComplete') });
 });
 
 // Teacher use case
 bthread('Teacher', function () {
   // Wait for the Start thread to complete
-  bp.sync({waitFor: bp.Event('StartComplete')});
+  bp.sync({ waitFor: bp.Event('StartComplete') });
 
   let s = new SeleniumSession('teacher');
   s.start(URL);
+
   pressLogin(s);
   typeUsernameTeacher(s);
   typePassword(s);
@@ -40,6 +47,8 @@ bthread('Teacher', function () {
   // Ctrl.doSleep(3000000);
   pressFileTypeSave(s);
   pressSaveAndReturn(s);
+  bp.sync({ request: bp.Event('DocxFileTypeSet') });
+
 });
 
 
@@ -68,4 +77,6 @@ bthread('Student', function () {
     if (handleDialog(s)){
       pressSaveChanges(s);
     }
+
+  bp.sync({ request: bp.Event('StudentSubmission') });
 });

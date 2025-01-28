@@ -62,6 +62,20 @@ function handleTutorial(session) {
     }
 }
 
+function deleteAssignment(session) {
+    // Locate the specific 3-dot menu for "Assignment 1"
+    session.click('//li[contains(@class, "modtype_assign") and .//a[contains(@href, "mod/assign/view.php") and contains(.//span, "Assignment 1")]]//i[@class="icon fa fa-ellipsis-vertical fa-fw " and @title="Edit"]');
+
+    // Wait for the dropdown menu to appear, then click the 'Delete' option
+    session.click('//li[contains(@class, "modtype_assign") and .//a[contains(@href, "mod/assign/view.php") and contains(.//span, "Assignment 1")]]//a[contains(@class, "editing_delete") and contains(@class, "text-danger")]');
+
+    // Wait for the delete confirmation modal to appear and click the 'Delete' button
+    Ctrl.doSleep(1000);
+    session.click('//button[@type="button" and @class="btn btn-danger" and @data-action="delete"]');
+
+}
+
+
 
 function pressAddActivity(session){
     with(session){
@@ -206,7 +220,7 @@ function handleDialog(session) {
         }
     } catch (error) {
         // Handle any unexpected errors
-        return false;
+        return true;
     }
 }
 
