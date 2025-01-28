@@ -17,7 +17,7 @@ For a full documentation go to [https://docs.provengo.tech](https://docs.proveng
 1. We started by creating the following files: [behavior.js](moodle/spec/js/behavior.js),[actions.js](moodle/spec/js/actions.js), and [data.js](moodle/data/data.js).
 2. We then ran the following command to generate the test model:
 ```shell
-provengo analyze -f PDF moodle   
+provengo analyze -f pdf moodle   
 ```
 3. We repeated steps 1-2 until we were satisfied with the generated model.
 4. We used the following command to run the tests:
@@ -25,7 +25,7 @@ provengo analyze -f PDF moodle
 provengo run --show-sessions moodle
 ```
 5. We repeated steps 1-4 until we were satisfied with the result.
-6. We recorded a video of the running tests and added it to the report. Since more than one browser session was opened, we recorded the entire screen. The link for the video is [here]($$*TODO* write the link$$).
+6. We recorded a video of the running tests and added it to the report. Since more than one browser session was opened, we recorded the entire screen. The link for the video is [here](https://postbguacil-my.sharepoint.com/:v:/g/personal/gala0_post_bgu_ac_il/ERZXveOr86lCvggZPrw3cIMBSZBxjnOGl_KxFDNHjI9jJw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=hjZi2Q).
 7. We copied the generated graph of the model to a file named [model.pdf](submission-files/model.pdf) inside the submission-files directory.
 
 ### Test files

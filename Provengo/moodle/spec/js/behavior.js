@@ -76,7 +76,9 @@ bthread('Student', function () {
   // var that keeps if dialog is present
     if (handleDialog(s)){
       pressSaveChanges(s);
-    }
+      // TODO: Its needs to be here but only after solve the problem
+      // bp.sync({ request: bp.Event('StudentSubmission') });
 
+    }
   bp.sync({ request: bp.Event('StudentSubmission') });
 });
