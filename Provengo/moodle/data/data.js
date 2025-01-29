@@ -3,6 +3,8 @@
  */
 
 const URL = 'http://localhost/';
+
+// TODO : Change the location to the absolute path of the file 'test.txt' in your system
 const FILE_PATH = 'C:\\Users\\galna\\Downloads\\2025-mbt-ah\\Provengo\\moodle\\data\\test.txt';
 
 const TEACHER_USERNAME = 'teacher';
@@ -12,9 +14,7 @@ const PASSWORD = 'Sandbox24!';
 const xpaths = {
   moodle:{
     general:{
-      // login:'//*[@id="usernavigation"]/div[5]/div/span/a',
       login:'//*[@id="usernavigation"]/div/div/span/a',
-      // login: '//*[@id="usernavigation"]/div[3]/div/span/a',
       username:'//*[@id="username"]',
       password:'//*[@id="password"]',
       loginButton:'//*[@id="loginbtn"]',

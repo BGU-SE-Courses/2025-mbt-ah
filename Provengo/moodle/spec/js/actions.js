@@ -48,20 +48,6 @@ function pressEditMode(session){
     }
 }
 
-function handleTutorial(session) {
-    try {
-        // Check if the "Skip tour" button is visible in the modal dialog
-        const isButtonVisible = session.findElement('//div[@class="modal-dialog" and @role="document" and @data-role="flexitour-step"]//button[@class="btn btn-secondary" and @data-role="end" and text()="Skip tour"]', { wait: false });
-
-        if (isButtonVisible) {
-            // If visible, click the button
-            session.click('//div[@class="modal-dialog" and @role="document" and @data-role="flexitour-step"]//button[@class="btn btn-secondary" and @data-role="end" and text()="Skip tour"]');
-        }
-    } catch (error) {
-        // console.error("Error handling 'Skip tour' modal:", error);
-    }
-}
-
 function deleteAssignment(session) {
     // Locate the specific 3-dot menu for "Assignment 1"
     session.click('//li[contains(@class, "modtype_assign") and .//a[contains(@href, "mod/assign/view.php") and contains(.//span, "Assignment 1")]]//i[@class="icon fa fa-ellipsis-vertical fa-fw " and @title="Edit"]');
@@ -140,26 +126,6 @@ function pressFileTypeSave(session){
         click(xpaths.moodle.teacher.fileTypeSave)
     }
 }
-
-// for student
-
-function handleModal(session) {
-    try {
-        // Attempt to find the "Got it" button
-        const gotItButton = session.findElement(
-            '//button[@class="btn btn-primary" and @data-role="end" and text()=" Got it "]'
-        );
-
-        // If the button exists, click it
-        if (gotItButton) {
-            session.click('//button[@class="btn btn-primary" and @data-role="end" and text()=" Got it "]');
-        } else {
-        }
-    } catch (error) {
-        // Handle any unexpected errors
-    }
-}
-
 
 
 function pressAssignmentLinkStudent(session){
