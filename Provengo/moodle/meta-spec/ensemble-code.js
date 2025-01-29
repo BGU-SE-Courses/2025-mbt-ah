@@ -106,5 +106,5 @@ function twoWayRanking(ensemble) {
  * Example: use the domain-specific coverage as default.
  */
 function rankingFunction(ensemble) {
-    return domainRanking(ensemble);
+    return twoWayRanking(ensemble);
 }

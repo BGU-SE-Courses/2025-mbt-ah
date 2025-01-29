@@ -5,7 +5,7 @@
 const URL = 'http://localhost/';
 
 // TODO : Change the location to the absolute path of the file 'test.txt' in your system
-const FILE_PATH = 'C:\\Users\\galna\\Downloads\\2025-mbt-ah\\Provengo\\moodle\\data\\test.txt';
+const FILE_PATH = 'D:\\Gal\\Documents\\GalCo3\\2025-mbt-ah\\Provengo\\moodle\\data\\test.txt';
 
 const TEACHER_USERNAME = 'teacher';
 const STUDENT_USERNAME = 'student';
