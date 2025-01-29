@@ -7,46 +7,34 @@ In this assignment, we tested an open-source software called [$$*TODO* software 
 $$*TODO* Add some general description about the software$$
 
 ## Installation
-$$*TODO* Write instructions on how to install the software and prepare the testing environment$$
+- install cucumber.cli (java plugin is available too)
+- follow [README.md](Cucumber/README.md) for more instructions on installation\usage and application of the behavioral 
+  tests
+- follow [Selenium/README.md](Selenium/README.md) instruction for installing and using Selenium
+- follow [README.md](Provengo/README.md) instruction for more instructions on installation and applications of
+   model-based-test
 
 ## What we tested
-$$*TODO* Add a description of the module and the user stories that you chose to test.
-For example, in the case of the Moodle example, you can write something like this:
 
-We tested the quiz module that allows for creating and taking quizzes. We chose to test the following user stories: 
+We tested the assignment module that allows for creating and submitting and editing of assignments.
+We chose to test the following user story: 
 
-*User story:* A teacher adds a new quiz to the course with two yes/no questions
+***User story:*** Student submit a ".txt"  file to an assignment ;
+Teacher changes the approved filetype of the assignment to ".docx".
 
-*Preconditions:* There is a course with a teacher
+***Preconditions**:* 
+   1) There is a course with a teacher and a student
+   2) there is an open assignment with .txt as allowed fileType for submission
 
-*Expected outcome:* The quiz is added to the course.
+***Expected outcome**:*
+* the student's .txt file is submitted successfully and the teacher successfully changes the allowed fileType
 
-*User story:* A students attempts a quiz and answers correctly.
-
-*Preconditions:* There is a course with a quiz with two yes/no questions and the quiz grade is calculated automatically and the grade is visible to the students upon submission.
-
-*Expected outcome:* The student receives 100.
-$$
 
 ## How we tested
 We used two different testing methods:
 1. [Cucumber](https://cucumber.io/), a behavior-driven testing framework.
 2. [Provengo](https://provengo.tech/), a story-based testing framework.
 
-Each of the testing methods is elaborated in its own directory. 
+Each of the testing methods is elaborated in its own directory.
 
-## Results
-Update all README.md files (except for d-e, see Section 1). Specifically, replace all $$*TODO*…$$ according to the instructions inside the $$.
 
-## Detected Bugs
-We detected the following bugs:
-
-1. Bug 1: 
-   1. General description: ...
-   2. Steps to reproduce: ...
-   3. Expected result: ...
-   4. Actual result: ...
-   5. Link to the bug report: (you are encouraged to report the bug to the developers of the software)
-2. Bug 2: ...
-
-$$*TODO* if you did not detect the bug, you should delete this section$$  

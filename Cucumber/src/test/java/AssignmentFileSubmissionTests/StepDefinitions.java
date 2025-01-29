@@ -1,6 +1,7 @@
 package AssignmentFileSubmissionTests;
 import io.cucumber.java.en.*;
-
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class StepDefinitions {
 
@@ -37,7 +38,8 @@ public class StepDefinitions {
     @When("the student uploads a .txt file and clicks submit")
     public void theStudentUploadsATxtFileAndClicksSubmit() {
         System.out.println("student uploading a .txt file and clicking submit");
-        studentHelper.submitFile("C:\\Users\\omer1\\projects\\2025-mbt-ah\\Cucumber\\src\\test\\java\\AssignmentFileSubmissionTests\\a.txt");
+        Path myPath  = Paths.get(System.getProperty("user.dir"),"src","test", "java", "AssignmentFileSubmissionTests", "a.txt");
+        studentHelper.submitFile(myPath.toString());
         System.out.println("student submitted the assignment");
     }
 
