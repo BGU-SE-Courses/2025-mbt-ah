@@ -8,11 +8,7 @@ bthread('Start',function () {
   pressMyCourses(s);
   pressMyFirstCourse(s);
   pressEditMode(s);
-  handleTutorial(s);
-
   deleteAssignment(s);
-  // Ctrl.doSleep(30000);
-
   pressAddActivity(s);
   pressAssignment(s);
   typeAssignmentName(s);
@@ -44,7 +40,6 @@ bthread('Teacher', function () {
   pressAssignmentChooseFileType(s);
   pressDocxFileType(s);
   pressSpecificDocxFileType(s);
-  // Ctrl.doSleep(3000000);
   pressFileTypeSave(s);
   pressSaveAndReturn(s);
   bp.sync({ request: bp.Event('DocxFileTypeSet') });
@@ -65,20 +60,12 @@ bthread('Student', function () {
   pressLoginButton(s);
   pressMyCourses(s);
   pressMyFirstCourse(s);
-  handleModal(s);
-  // Ctrl.doSleep(3000000);
   pressAssignmentLinkStudent(s);
   pressAddSubmission(s);
   pressAddButton(s);
   pressUploadAFile(s);
   pressUploadFile(s);
   pressUploadThisFile(s);
-  // var that keeps if dialog is present
-    if (handleDialog(s)){
-      pressSaveChanges(s);
-      // TODO: Its needs to be here but only after solve the problem
-      // bp.sync({ request: bp.Event('StudentSubmission') });
-
-    }
+  pressSaveChanges(s);
   bp.sync({ request: bp.Event('StudentSubmission') });
 });
